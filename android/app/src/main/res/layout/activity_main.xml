@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--Nhiệt-->
+    <TextView
+        android:id="@+id/nhietdo"
+        android:layout_width="60dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/nhietdo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="32dp" />
+    <TextView
+        android:id="@+id/textNhiet"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/nhietdo"
+        app:layout_constraintStart_toEndOf="@+id/nhietdo"
+        app:layout_constraintTop_toTopOf="@+id/nhietdo"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <!--Độ ẩm -->
+    <TextView
+        android:id="@+id/doam"
+        android:layout_width="61dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/doam"
+        app:layout_constraintStart_toStartOf="@+id/nhietdo"
+        app:layout_constraintTop_toBottomOf="@+id/nhietdo" />
+    <TextView
+        android:id="@+id/textDoam"
+        android:layout_width="36dp"
+        android:layout_height="23dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/doam"
+        app:layout_constraintStart_toEndOf="@+id/doam"
+        app:layout_constraintTop_toTopOf="@+id/doam"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <!--Gas-->
+    <TextView
+        android:id="@+id/gas"
+        android:layout_width="63dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="84dp"
+        android:text="@string/gas"
+        app:layout_constraintStart_toStartOf="@+id/nhietdo"
+        app:layout_constraintTop_toBottomOf="@+id/nhietdo" />
+    <TextView
+        android:id="@+id/textGas"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gas"
+        app:layout_constraintStart_toEndOf="@+id/gas"
+        app:layout_constraintTop_toTopOf="@+id/gas"
+        app:layout_constraintVertical_bias="0.615" />
+
+    <!--CO-->
+    <TextView
+        android:id="@+id/co"
+        android:layout_width="63dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/gas"
+        app:layout_constraintStart_toStartOf="@+id/nhietdo"
+        app:layout_constraintTop_toBottomOf="@+id/gas" />
+
+    <TextView
+        android:id="@+id/textCO"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/co"
+        app:layout_constraintStart_toEndOf="@+id/co"
+        app:layout_constraintTop_toTopOf="@+id/co"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <!--Khói-->
+    <TextView
+        android:id="@+id/khoi"
+        android:layout_width="63dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="108dp"
+        android:text="Khói: "
+        app:layout_constraintStart_toStartOf="@+id/nhietdo"
+        app:layout_constraintTop_toBottomOf="@+id/gas" />
+
+    <TextView
+        android:id="@+id/textKhoi"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/khoi"
+        app:layout_constraintStart_toEndOf="@+id/khoi"
+        app:layout_constraintTop_toBottomOf="@+id/khoi"
+        app:layout_constraintVertical_bias="0.568" />
+
+</android.support.constraint.ConstraintLayout>

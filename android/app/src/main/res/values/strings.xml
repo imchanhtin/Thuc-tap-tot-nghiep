@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">canhbaochay</string>
+    <string name="nhietdo">Nhiệt độ:</string>
+    <string name="doam">Độ ẩm:</string>
+    <string name="co">CO:</string>
+    <string name="gas">Gas:</string>
+    <string name="textNhietdo"></string>
+    <string name="textDoam"></string>
+    <string name="textGas"></string>
+    <string name="textCO"></string>
+    <string name="m">Độ Ẩm:</string>
+    <string name="textdoam">Độ ẩm</string>
+</resources>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cảnh báo cháy</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="icon" href="/static/images/logo.jpg" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            function time() {
+                var today = new Date();
+                var weekday = new Array(7);
+                weekday[0] = "Chủ nhật";
+                weekday[1] = "Thứ 2";
+                weekday[2] = "Thứ 3";
+                weekday[3] = "Thứ 4";
+                weekday[4] = "Thứ 5";
+                weekday[5] = "Thứ 6";
+                weekday[6] = "Thứ 7";
+                var day = weekday[today.getDay()];
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0!
+                var yyyy = today.getFullYear();
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                nowTime = h + ":" + m + ":" + s;
+                if (dd < 10) {
+                    dd = '0' + dd
+                }
+                if (mm < 10) {
+                    mm = '0' + mm
+                }
+                today = day + ', ' + dd + '/' + mm + '/' + yyyy;
+
+                tmp = '<span class="date">' + today + ' | ' + nowTime + '</span>';
+
+                document.getElementById("clock").innerHTML = tmp;
+
+                clocktime = setTimeout("time()", "1000", "JavaScript");
+                function checkTime(i) {
+                    if (i < 10) {
+                        i = "0" + i;
+                    }
+                    return i;
+                }
+            }
+        </script>
+    </head>
+<body onload="time()">
+	<div id="clock"></div>
+	<div class="hienthi">
+		<strong>
+			<div style="font-size: 60px;">
+				Nhiệt độ: <span id="kqnd"></span> ºC <br>
+			</div> Độ ẩm: <span id="kqda"></span>% <br> GAS: <span id="kh"></span> ppm
+			<br> CO: <span id="CO"></span> ppm <br> Khói: <span
+			id="khoi"></span> ppm<br>
+		</strong>
+	</div>
+	<br>
+	<div id="thongbao">
+		Tình trạng: <span id="tita"></span>
+	</div>
+	<button class="btn"><span>Biểu đồ</span></button>
+	<div class="content">
+		<iframe width="450" height="260" style="border: 1px solid #cccccc;"
+			src="https://thingspeak.com/channels/478199/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Nhi%E1%BB%87t+%C4%91%E1%BB%99&type=line&xaxis=Th%E1%BB%9Di+gian&yaxis=Nhi%E1%BB%87t+%C4%91%E1%BB%99+%28%2AC%29"></iframe>
+		<iframe width="450" height="260" style="border: 1px solid #cccccc;"
+			src="https://thingspeak.com/channels/478199/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=%C4%90%E1%BB%99+%E1%BA%A9m+m%C3%B4i+tr%C6%B0%E1%BB%9Dng&type=line&xaxis=Th%E1%BB%9Di+gian&yaxis=%C4%90%E1%BB%99+%E1%BA%A9m+%28%25%29&yaxismax=100"></iframe>
+		<br>
+		<iframe width="450" height="260" style="border: 1px solid #cccccc;"
+			src="https://thingspeak.com/channels/478199/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=N%E1%BB%93ng+%C4%91%E1%BB%99+Gas+&type=line&xaxis=Th%E1%BB%9Di+gian&yaxis=N%E1%BB%93ng+%C4%91%E1%BB%99+"></iframe>
+		<iframe width="450" height="260" style="border: 1px solid #cccccc;"
+			src="https://thingspeak.com/channels/478199/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=N%E1%BB%93ng+%C4%91%E1%BB%99+CO+&type=line&xaxis=Th%E1%BB%9Di+gian&yaxis=N%E1%BB%93ng+%C4%91%E1%BB%99"></iframe>
+	</div>
+	<script>
+		var coll = document.getElementsByClassName("btn");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+			coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.display === "block") {
+					content.style.display = "none";
+				} else {
+					content.style.display = "block";
+				}
+			});
+		}
+	</script>
+
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+<script>
+	//Khai báo kết nối Firebase
+	var config = {
+		apiKey : "AIzaSyCT6xAvB7A60QTRR6GCIGrdPp3Blxh1nsM",
+		authDomain : "canhbaochay.firebaseapp.com",
+		databaseURL : "https://canhbaochay.firebaseio.com",
+		projectId : "canhbaochay",
+		storageBucket : "canhbaochay.appspot.com",
+		messagingSenderId : "26099383258"
+	};
+	firebase.initializeApp(config);
+
+	//Kết nối CSDL Firebase 
+	dataRef = firebase.database().ref();
+	dataRef.on('value', function(snapshot) {
+		//khai báo biến để lấy thông số
+		var nhietdo = snapshot.val().nhietdo;
+		var doam = snapshot.val().doam;
+		var gas = snapshot.val().gas;
+		var CO = snapshot.val().CO;
+		var khoi = snapshot.val().khoi;
+
+		//hiển thị thông số
+		$('#kqnd').text(nhietdo);
+		$('#kqda').text(doam);
+		$('#kh').text(gas);
+		$('#CO').text(CO);
+		$('#khoi').text(khoi);
+		var temp = parseFloat(nhietdo);
+		var humdr = parseFloat(doam);
+		var khigas = parseFloat(gas);
+		var khiCO = parseFloat(CO);
+		var smoke = parseFloat(khoi);
+		if (temp > 36 && smoke >= 10 && khiCO >= 10 || temp >50) {
+			tinhtrang = "Cháy";
+			$('#tita').text(tinhtrang).css({"color": "red"});
+		} 
+		else if (temp >= 36 && temp <= 50) {
+			tinhtrang = "Nhiệt độ tăng cao";
+			$('#tita').text(tinhtrang).css({"color": "orange"});
+		}
+		else if (humdr >= 95) {
+			tinhtrang = "Độ ẩm lớn";
+			$('#tita').text(tinhtrang).css({"color": "blue"});
+		} 
+		else if (khigas >= 15 && khiCO >= 20) {
+			tinhtrang = "Rò rỉ khí gas";
+			$('#tita').text(tinhtrang).css({"color": "#444444"});
+		}
+
+		else {
+			tinhtrang = "Bình thường";
+			$('#tita').text(tinhtrang).css({"color": "green"});
+		}
+	});
+</script>
+</html>
