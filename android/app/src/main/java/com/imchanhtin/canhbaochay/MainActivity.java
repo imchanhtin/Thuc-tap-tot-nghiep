@@ -15,7 +15,7 @@ import static android.content.ContentValues.TAG;
 public class MainActivity extends Activity {
 
     DatabaseReference nhietdo, doam, gas,co,khoi;
-    TextView textNhiet, textDoam, textGas,textCO,textKhoi;
+    TextView textNhiet, textDoam, textGas,textCO,textKhoi, textTinhtrang;
 
 
 
@@ -28,6 +28,7 @@ public class MainActivity extends Activity {
         textGas=findViewById(R.id.textGas);
         textCO=findViewById(R.id.textCO);
         textKhoi=findViewById(R.id.textKhoi);
+        textTinhtrang = findViewById(R.id.textTR);
 
 
         //đọc dữ liệu theo node trong Firebase (cái này lấy từ nút canhbaochay/nhietdo)
@@ -99,9 +100,9 @@ public class MainActivity extends Activity {
         khoi.addValueEventListener(new ValueEventListener() {
           @Override
           public void onDataChange(DataSnapshot dataSnapshot) {
-              String value = dataSnapshot.getValue(Double.class)+"";
+              Double value = dataSnapshot.getValue(Double.class);
               Log.v(TAG, "Value is: " + value);
-              textKhoi.setText(value);
+              textKhoi.setText(value.toString());
           }
 
           @Override

@@ -10,4 +10,7 @@
     <string name="textCO"></string>
     <string name="m">Độ Ẩm:</string>
     <string name="textdoam">Độ ẩm</string>
+    <string name="Khoi">Khói:</string>
+    <string name="CO">CO</string>
+    <string name="tinhtrang">Tình trạng:</string>
 </resources>
