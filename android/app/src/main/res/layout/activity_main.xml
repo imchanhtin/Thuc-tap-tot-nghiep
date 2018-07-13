@@ -9,17 +9,19 @@
     <!--Nhiệt-->
     <TextView
         android:id="@+id/nhietdo"
-        android:layout_width="60dp"
+        android:layout_width="89dp"
         android:layout_height="37dp"
-        android:layout_marginBottom="96dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginBottom="84dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginStart="56dp"
         android:text="@string/nhietdo"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textNhiet"
+        android:textSize="20sp"
         android:layout_width="50dp"
         android:layout_height="35dp"
         android:layout_marginTop="8dp"
@@ -31,11 +33,12 @@
     <!--Độ ẩm -->
     <TextView
         android:id="@+id/doam"
-        android:layout_width="55dp"
+        android:layout_width="68dp"
         android:layout_height="34dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginStart="36dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
         android:text="@string/doam"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/nhietdo"
         app:layout_constraintStart_toEndOf="@+id/textNhiet"
         app:layout_constraintTop_toTopOf="@+id/nhietdo"
@@ -43,6 +46,7 @@
 
     <TextView
         android:id="@+id/textDoam"
+        android:textSize="20sp"
         android:layout_width="54dp"
         android:layout_height="31dp"
         android:layout_marginEnd="8dp"
@@ -58,19 +62,21 @@
     <!--Gas-->
     <TextView
         android:id="@+id/gas"
-        android:layout_width="30dp"
+        android:layout_width="45dp"
         android:layout_height="25dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="68dp"
-        android:layout_marginStart="68dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="@string/gas"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/khoi"
         app:layout_constraintStart_toEndOf="@+id/textCO"
         app:layout_constraintTop_toTopOf="@+id/khoi" />
 
     <TextView
         android:id="@+id/textGas"
+        android:textSize="20sp"
         android:layout_width="40dp"
         android:layout_height="25dp"
         android:layout_marginEnd="8dp"
@@ -86,13 +92,14 @@
     <!--CO-->
     <TextView
         android:id="@+id/co"
-        android:layout_width="27dp"
+        android:layout_width="34dp"
         android:layout_height="24dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="68dp"
-        android:layout_marginStart="68dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="8dp"
-        android:text="@string/CO"
+        android:text="@string/co"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/khoi"
         app:layout_constraintStart_toEndOf="@+id/textKhoi"
         app:layout_constraintTop_toTopOf="@+id/khoi"
@@ -100,6 +107,7 @@
 
     <TextView
         android:id="@+id/textCO"
+        android:textSize="20sp"
         android:layout_width="40dp"
         android:layout_height="24dp"
         android:layout_marginTop="8dp"
@@ -111,17 +119,19 @@
     <!--Khói-->
     <TextView
         android:id="@+id/khoi"
-        android:layout_width="37dp"
+        android:layout_width="54dp"
         android:layout_height="25dp"
         android:layout_marginBottom="32dp"
         android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp"
         android:text="@string/Khoi"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textKhoi"
+        android:textSize="20sp"
         android:layout_width="40dp"
         android:layout_height="25dp"
         android:layout_marginTop="8dp"
@@ -130,39 +140,44 @@
         app:layout_constraintTop_toBottomOf="@+id/khoi"
         app:layout_constraintVertical_bias="0.568" />
 
+    <!--Tình trạng-->
     <TextView
         android:id="@+id/tinhTrang"
-        android:layout_width="71dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="168dp"
+        android:layout_width="97dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="160dp"
         android:layout_marginLeft="96dp"
         android:layout_marginStart="96dp"
         android:text="@string/tinhtrang"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textTR"
-        android:layout_width="119dp"
-        android:layout_height="44dp"
+        android:layout_width="57dp"
+        android:layout_height="27dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tinhTrang"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tinhTrang"
         app:layout_constraintTop_toBottomOf="@+id/tinhTrang"
-        app:layout_constraintVertical_bias="0.469" />
+        app:layout_constraintVertical_bias="0.444" />
 
     <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/anh"
         android:layout_width="156dp"
         android:layout_height="178dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
         android:layout_marginTop="84dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/alert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
