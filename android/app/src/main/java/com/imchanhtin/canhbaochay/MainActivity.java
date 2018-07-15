@@ -3,12 +3,14 @@ package com.imchanhtin.canhbaochay;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.media.Image;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
 
 import com.google.firebase.database.*;
 
@@ -21,9 +23,8 @@ public class MainActivity extends Activity {
     DatabaseReference nhietdo, doam, gas,co,khoi;
     TextView textNhiet, textDoam, textGas,textCO,textKhoi, textTinhtrang;
     double gtKhoi,gtCO,gtGAS, gtDOAM, gtNhiet;
-    Image hinhanh;
-    MediaPlayer chay, baodong;
     GifImageView anh;
+
     @Override
   protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +32,9 @@ public class MainActivity extends Activity {
         textNhiet=findViewById(R.id.textNhiet);
         textDoam=findViewById(R.id.textDoam);
         textGas=findViewById(R.id.textGas);
-        textCO=findViewById(R.id.textCO);
+        textCO=findViewById (R.id.textCO);
         textKhoi=findViewById(R.id.textKhoi);
         textTinhtrang = findViewById(R.id.textTR);
-        //anh = findViewById(R.id.anh);
-        //chay = MediaPlayer.create(getBaseContext(),R.raw.chay);
 
         //đọc dữ liệu theo node trong Firebase (cái này lấy từ nút canhbaochay/nhietdo)
         nhietdo = FirebaseDatabase.getInstance().getReference().child("nhietdo");
@@ -45,20 +44,8 @@ public class MainActivity extends Activity {
         khoi = FirebaseDatabase.getInstance().getReference().child("khoi");
         readDB();
         tinhtrang();
-       // listen();
 
     }
-//    public void listen(){
-//        anh.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(chay.isPlaying()== true){
-//                   chay.stop();
-//                }
-//                else chay.start();
-//            }
-//        });
-//    }
   public void readDB(){
         nhietdo.addValueEventListener(new ValueEventListener() {
             @Override
@@ -147,25 +134,36 @@ public class MainActivity extends Activity {
           textTinhtrang.setTextColor(Color.RED);
           mau(Color.RED,Color.RED,Color.RED,Color.RED,Color.RED);
           anhtinhtrang(R.drawable.alert);
-
+          nhacChay();
       }
       else if(gtNhiet >= 36 && gtNhiet <= 50) {
           textTinhtrang.setText("Nhiệt độ tăng cao");
           textTinhtrang.setTextColor(Color.YELLOW);
           mau(Color.YELLOW,Color.YELLOW,Color.GREEN,Color.GREEN,Color.GREEN);
           anhtinhtrang(R.drawable.warring);
+          nhacNH();
+
       }
       else if(gtDOAM > 95){
           textTinhtrang.setText("Độ ẩm cao");
           textTinhtrang.setTextColor(Color.YELLOW);
           mau(Color.GREEN,Color.RED,Color.GREEN,Color.GREEN,Color.GREEN);
           anhtinhtrang(R.drawable.warring);
+          nhacNH();
       }
       else if (gtGAS >= 15 && gtCO >= 20) {
           textTinhtrang.setText("Rò rỉ khí GAS!");
           textTinhtrang.setTextColor(Color.YELLOW);
           mau(Color.GREEN,Color.GREEN,Color.RED,Color.RED,Color.RED);
           anhtinhtrang(R.drawable.warring);
+          nhacNH();
+      }
+      else if(gtKhoi > 40){
+          textTinhtrang.setText("Nguy hiểm");
+          textTinhtrang.setTextColor(Color.YELLOW);
+          mau(Color.GREEN,Color.YELLOW,Color.GREEN,Color.YELLOW,Color.RED);
+          anhtinhtrang(R.drawable.warring);
+          nhacNH();
       }
     }
   public void mau(int NHIET, int DOAM, int GAS, int CO, int KHOI){
@@ -175,9 +173,30 @@ public class MainActivity extends Activity {
         textCO.setTextColor(CO);
         textKhoi.setTextColor(KHOI);
     }
-    public void anhtinhtrang(int dcAnh){
+  public void anhtinhtrang(int dcAnh){
         anh = findViewById(R.id.anh);
         anh.setImageResource(dcAnh);
     }
+  public void nhacChay(){
+      MediaPlayer chay,nguyhiem;
+      chay= MediaPlayer.create(this, R.raw.chay);
+      nguyhiem= MediaPlayer.create(this, R.raw.warning);
+      if(nguyhiem.isLooping()){
+          nguyhiem.setLooping(false);
+          nguyhiem.stop();
+      }
+      chay.start();
+      chay.setLooping(true);
+  }
+  public void nhacNH(){
+      MediaPlayer chay,nguyhiem;
+      chay= MediaPlayer.create(this, R.raw.chay);
+      nguyhiem= MediaPlayer.create(this, R.raw.warning);
+      if(chay.isLooping()){
+          chay.stop();
+      }
+      nguyhiem.start();
+      nguyhiem.setLooping(true);
+  }
 }
 
