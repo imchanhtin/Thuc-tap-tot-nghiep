@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">canhbaochay</string>
+    <string name="app_name">Cảnh báo cháy</string>
     <string name="nhietdo">Nhiệt độ:</string>
     <string name="doam">Độ ẩm:</string>
     <string name="co">CO:</string>
