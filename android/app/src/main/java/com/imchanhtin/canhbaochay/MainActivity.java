@@ -41,6 +41,7 @@ public class MainActivity extends Activity {
         chay = MediaPlayer.create(this, R.raw.chay);
         nguyhiem = MediaPlayer.create(this, R.raw.warning);
 
+
         //đọc dữ liệu theo node trong Firebase (cái này lấy từ nút canhbaochay/nhietdo)
         nhietdo = FirebaseDatabase.getInstance().getReference().child("nhietdo");
         doam = FirebaseDatabase.getInstance().getReference().child("doam");
@@ -48,8 +49,6 @@ public class MainActivity extends Activity {
         co = FirebaseDatabase.getInstance().getReference().child("CO");
         khoi = FirebaseDatabase.getInstance().getReference().child("khoi");
         readDB();
-        tinhtrang();
-       // nhac();
     }
 
     public void readDB() {
@@ -185,7 +184,7 @@ public class MainActivity extends Activity {
             }
         } else if (gtGAS >= 15 && gtCO >= 20) {
             textTinhtrang.setText("Rò rỉ khí GAS!");
-            textTinhtrang.setTextColor(Color.YELLOW);
+            textTinhtrang.setTextColor(Color.RED);
             mau(Color.GREEN, Color.GREEN, Color.RED, Color.RED, Color.RED);
             anhtinhtrang(R.drawable.nguyhiem);
             nguyhiem.start();
@@ -219,43 +218,6 @@ public class MainActivity extends Activity {
     public void anhtinhtrang(int dcAnh) {
         anh = findViewById(R.id.anh);
         anh.setImageResource(dcAnh);
-    }
-    public void nhac(){
-        textTinhtrang.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    chay.stop();
-                    nguyhiem.stop();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(textTinhtrang.toString().equals("Cháy")){
-                    chay.start();
-                    chay.setLooping(true);
-                    if(nguyhiem.isLooping()){
-                        nguyhiem.setLooping(false);
-                        nguyhiem.stop();
-                    }
-                }
-                if(textTinhtrang.toString().equals("Bình thường")){
-                    chay.stop();
-                    nguyhiem.stop();
-                }
-                if(!textTinhtrang.toString().equals("Cháy") && !textTinhtrang.toString().equals("Bình thường") ){
-                    nguyhiem.start();
-                    nguyhiem.setLooping(true);
-                    if(chay.isLooping()){
-                        chay.setLooping(false);
-                        chay.stop();
-                    }
-                }
-            }
-        });
     }
 }
 
