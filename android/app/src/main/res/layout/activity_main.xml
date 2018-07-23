@@ -35,8 +35,8 @@
         android:id="@+id/doam"
         android:layout_width="68dp"
         android:layout_height="34dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
         android:text="@string/doam"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/nhietdo"
@@ -143,32 +143,32 @@
     <!--Tình trạng-->
     <TextView
         android:id="@+id/tinhTrang"
-        android:layout_width="97dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="232dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginStart="64dp"
+        android:layout_width="122dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="192dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
         android:text="@string/tinhtrang"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textTR"
         android:layout_width="210dp"
-        android:layout_height="36dp"
+        android:layout_height="43dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/tinhTrang"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tinhTrang"
         app:layout_constraintTop_toBottomOf="@+id/tinhTrang"
-        app:layout_constraintVertical_bias="0.388" />
+        app:layout_constraintVertical_bias="0.392" />
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/anh"
