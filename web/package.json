@@ -1,5 +1,5 @@
 {
-  "name": "iot",
+  "name": "website",
   "version": "1.0.0",
   "description": "Thuc tap tot nghiep",
   "main": "index.js",
@@ -15,5 +15,9 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "npm": "^6.1.0"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [
+    "NodeJS"
+  ]
 }
