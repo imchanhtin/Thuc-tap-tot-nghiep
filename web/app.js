@@ -1,6 +1,6 @@
 var express = require("express");
 var controllers = require(__dirname + "/apps/controllers");
-var config = require("config");
+//var config = require("config");
 var bodyParser = require("body-parser");
 var app = express();
 
@@ -12,9 +12,7 @@ app.set("view engine", "ejs");
 
 //Static Folder
 app.use("/static",express.static(__dirname + "/public"));
-
-var host = config.get("server.host");
-var port = config.get("server.port");
-app.listen(port,host, function () {
-    console.log("Server dang chay tren port",port);
+app.listen(process.env.PORT|| 3000);
+app.get("/",function(req,res){
+    res.render("index");
 });
